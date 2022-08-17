@@ -28,9 +28,14 @@ import '@ionic/react/css/display.css';
 
 // components
 import { Home } from './pages/Home'
+import { NavBar } from './components/NavBar';
+import { PhotocarProps } from './container/PhotocarProps'
+import { Logo } from './components/Logo/Logo';
 
 /* Theme variables */
 import './theme/variables.css';
+// import { ListOfCategories } from './components/ListOfCategories';
+import { HomeListCategories } from './container/HomeListCategories';
 
 
 setupIonicReact();
@@ -45,13 +50,16 @@ const App: React.FC = () => {
     <IonApp>
       <GlobalStyle />
       <IonReactRouter>
+        <Logo />
         <IonRouterOutlet>
           <Route exact path="/" component={Home} />
+          <Route exact path="/detail/:id" component={PhotocarProps} />
+          <Route exact path="/photos/:categories/:id" component={HomeListCategories} />
         </IonRouterOutlet>
+        <NavBar />
       </IonReactRouter>
     </IonApp >
   );
-
 };
 
 export default App;

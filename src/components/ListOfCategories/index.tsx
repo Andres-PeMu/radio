@@ -10,5 +10,5 @@ export const ListOfCategories = () => {
         mokCategories.map(category => <Item key={category.id}><Category {...category} /></Item>)
       }
     </List>
-    )
+  )
 }
