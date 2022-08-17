@@ -9,21 +9,21 @@ import { MdHome, MdFavoriteBorder, MdPersonOutline } from "react-icons/md";
 export const NavBar = () => {
 
     const [selectedHome, setSelectedHome] = useState(true);
-    const [selectedFaborite, setSelectedFaborite] = useState(false);
+    const [selectedFavorite, setSelectedFavorite] = useState(false);
     const [selectedUser, setSelectedUser] = useState(false);
 
     const tabSelectedHome = (selectedHome) ? 'tab-selected' : '';
-    const tabSelectedFaborite = (selectedFaborite) ? 'tab-selected' : '';
+    const tabSelectedFavorite = (selectedFavorite) ? 'tab-selected' : '';
     const tabSelectedUser = (selectedUser) ? 'tab-selected' : '';
     
     const handleTabClickHome = ()=> {
         const home:boolean = true;
-        const faborite = false;
+        const favorite = false;
         const user = false
-        const classFaborite = document.getElementById('tab-button-Faborites')
+        const classFavorite = document.getElementById('tab-button-Faborites')
         const classUser = document.getElementById('tab-button-User')
-        if (classFaborite){
-            classFaborite.classList.remove('tab-selected')
+        if (classFavorite){
+            classFavorite.classList.remove('tab-selected')
         }
         if (classUser){
             classUser.classList.remove('tab-selected')
@@ -31,15 +31,15 @@ export const NavBar = () => {
 
         return (
             setSelectedHome(home),
-            setSelectedFaborite(faborite),
+            setSelectedFavorite(favorite),
             setSelectedUser(user)
         )
         
     }
 
-    const handleTabClickFaborite = ()=> {
+    const handleTabClickFavorite = ()=> {
         const home = false;
-        const faborite = true;
+        const favorite = true;
         const user = false
         const classHome = document.getElementById('tab-button-Home')
         const classUser = document.getElementById('tab-button-User')
@@ -51,30 +51,29 @@ export const NavBar = () => {
         }
         return (
             setSelectedHome(home),
-            setSelectedFaborite(faborite),
+            setSelectedFavorite(favorite),
             setSelectedUser(user)
         )
     }
 
     const handleTabClickUser = ()=> {
         const home = false;
-        const faborite = false;
+        const favorite = false;
         const user = true;
         const classHome = document.getElementById('tab-button-Home')
-        const classFaborite = document.getElementById('tab-button-Faborite')
+        const classFavorite = document.getElementById('tab-button-Favorite')
         if (classHome){
             classHome.classList.remove('tab-selected')
         }
-        if (classFaborite){
-            classFaborite.classList.remove('tab-selected')
+        if (classFavorite){
+            classFavorite.classList.remove('tab-selected')
         }
         return (
             setSelectedHome(home),
-            setSelectedFaborite(faborite),
+            setSelectedFavorite(favorite),
             setSelectedUser(user)
         )
     }
-
 
     return (
         <Nav>
@@ -83,9 +82,9 @@ export const NavBar = () => {
                     <MdHome />
                     <IonLabel>Home</IonLabel>
                 </IonTabButton>
-                <IonTabButton tab="Faborites" href="/faborite" className={tabSelectedFaborite} onClick={handleTabClickFaborite}>
+                <IonTabButton tab="Favorites" href="/favorite" className={tabSelectedFavorite} onClick={handleTabClickFavorite}>
                     <MdFavoriteBorder />
-                    <IonLabel>Faborites</IonLabel>
+                    <IonLabel>Favorites</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="User" href="/user" className={tabSelectedUser} onClick={handleTabClickUser}>
                     <MdPersonOutline />
