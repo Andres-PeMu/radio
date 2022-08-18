@@ -29,34 +29,34 @@ import '@ionic/react/css/display.css';
 // components
 import { Home } from './pages/Home'
 import { NavBar } from './components/NavBar';
+// import { Logo } from './components/Logo/Logo';
+
 import { PhotocarProps } from './container/PhotocarProps'
-import { Logo } from './components/Logo/Logo';
+import { HomeListCategories } from './container/HomeListCategories';
 
 /* Theme variables */
 import './theme/variables.css';
-// import { ListOfCategories } from './components/ListOfCategories';
-import { HomeListCategories } from './container/HomeListCategories';
+
+import IsAuthContext from './hook/IsAuthContext';
 
 
 setupIonicReact();
 
 const App: React.FC = () => {
 
-  const urlParams = new window.URLSearchParams(window.location.search)
-  const detailId = urlParams.get('detail')
-  console.log(detailId)
-
   return (
     <IonApp>
       <GlobalStyle />
       <IonReactRouter>
-        <Logo />
+        {/* <Logo /> */}
         <IonRouterOutlet>
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={PhotocarProps} />
           <Route exact path="/photos/:categories/:id" component={HomeListCategories} />
+          <IsAuthContext />
         </IonRouterOutlet>
         <NavBar />
+
       </IonReactRouter>
     </IonApp >
   );

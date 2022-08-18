@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import { IonTabButton, IonTabBar } from "@ionic/react"
+
+import { MdHome } from "react-icons/md";
 import './style.css'
 
 export const Logo = () => {
     return (
-        <Link to={'/'}>
-            <div>
-                <h1 className='logoH1'>Logo</h1>
-            </div>
-        </Link>
+        <IonTabBar slot='bottom'>
+            <IonTabButton tab="Home" href="/">
+                <MdHome />
+            </IonTabButton>
+        </IonTabBar>
     );
 };
