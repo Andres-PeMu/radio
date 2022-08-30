@@ -4,10 +4,10 @@ import {
   IonContent
 } from '@ionic/react';
 
-import { Favorites } from '../pages/Favorites';
-import { User } from '../pages/User';
-import { NotRegisteredUser } from '../pages/NotRegisteredUser';
-import { Consumer } from './Context';
+import { Favorites } from '../pages/Favorites/Favorites';
+import { User } from '../pages/User/User';
+import { NotRegisteredUser } from '../pages/NotRegsterdUser/NotRegisteredUser';
+import { Consumer } from './useContext';
 
 const IsAuthContext = () => {
   return (

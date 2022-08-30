@@ -1,0 +1,39 @@
+@import url('../../theme/variables.css');
+
+.login_form {
+  width: 95%;
+  text-align: center;
+  margin: 32px auto;
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 8px;
+  padding: 0px 8px 32px 8px;
+}
+
+.from_item {
+  margin: 0px auto;
+  padding: 0;
+}
+
+.from_input {
+  margin: 0px auto;
+}
+
+.from_tab_bar {
+  margin: 0px;
+  padding: 0px;
+}
+
+.from_link_recover {
+  text-decoration: none;
+  display: grid;
+  text-align: end;
+  padding: 16px 16px 0px 0px;
+}
+
+.from_p_register {
+  padding: 16px 16px 0px 0px;
+}
+
+.from_Link_register {
+  text-decoration: none;
+}

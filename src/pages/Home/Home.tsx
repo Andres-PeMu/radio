@@ -1,6 +1,6 @@
 import { IonContent } from '@ionic/react';
-import { ListOfCategories } from '../components/ListOfCategories';
-import { ListOfPhotoCards } from '../components/ListOfPhotoCards';
+import { ListOfCategories } from '../../components/ListOfCategories';
+import { ListOfPhotoCards } from '../../components/ListOfPhotoCards';
 
 
 export const Home = () => {

@@ -27,7 +27,7 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 // components
-import { Home } from './pages/Home'
+import { Home } from './pages/Home/Home'
 import { NavBar } from './components/NavBar';
 // import { Logo } from './components/Logo/Logo';
 
@@ -48,7 +48,6 @@ const App: React.FC = () => {
     <IonApp>
       <GlobalStyle />
       <IonReactRouter>
-        {/* <Logo /> */}
         <IonRouterOutlet>
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={PhotocarProps} />

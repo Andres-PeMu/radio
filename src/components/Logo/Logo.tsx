@@ -5,8 +5,8 @@ import './style.css'
 
 export const Logo = () => {
     return (
-        <IonTabBar slot='bottom'>
-            <IonTabButton tab="Home" href="/">
+        <IonTabBar slot='bottom' className="tabBar_logo">
+            <IonTabButton tab="Home" href="/" >
                 <MdHome />
             </IonTabButton>
         </IonTabBar>
