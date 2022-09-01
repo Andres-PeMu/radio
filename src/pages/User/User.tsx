@@ -1,11 +1,11 @@
-// import { Logo } from "../components/Logo/Logo"
+import { NavBar } from "../../components/NavBar";
 
 
 export const User = () => {
     return (
         <div>
-            {/* <Logo /> */}
-            <h1>Users</h1>            
+            <h1>Users</h1>  
+            <NavBar />          
         </div>
     );
 };

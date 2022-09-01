@@ -33,7 +33,7 @@ export const UserFrom = ({ onSubmit }: { onSubmit: any }) => {
             </IonItem>
             <Link to={'/'} className='from_link_recover'>Olvide mi contraseña</Link>
             <IonButton expand="block" type="submit" class='ion-margin-top'>iniciar secion</IonButton>
-            <p className='from_p_register'>¿no tienes cuenta? <Link to={'/'} className='from_Link_register'>Registrate</Link></p>
+            <p className='from_p_register'>¿no tienes cuenta? <Link to={'/register'} className='from_Link_register'>Registrate</Link></p>
         </form>
     );
 };

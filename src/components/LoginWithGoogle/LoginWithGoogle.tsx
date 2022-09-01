@@ -1,31 +1,15 @@
-import { useEffect, useState } from 'react';
-
-import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
-import { Auth, userExists } from '../../FireBase/Firebase'
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { Auth } from '../../FireBase/Firebase'
 import { IonButton, IonContent } from '@ionic/react';
+import { AuthProvider } from '../../services/AuthProvider/AuthProvider';
+// import { Consumer } from '../../hook/useContext';
+
 
 export const LoginWithGoogle = () => {
-
-    const [currentUser, setCurrentUser] = useState(null)
+    let history = useHistory();
     const [state, setCurrentState] = useState(0)
-
-    useEffect(() => {
-        setCurrentState(1);
-        onAuthStateChanged(Auth, handleUserStateChanged);
-    }, [])
-
-    const handleUserStateChanged = async (user: any) => {
-        if (user) {
-            const isRegistered = await userExists(user.uid);
-            if (await isRegistered) {
-                setCurrentState(2);
-            }else {
-                setCurrentState(3);
-            }
-        } else {
-            setCurrentState(4);
-        }
-    }
 
     const handleOnClic = async () => {
         const googleProvider = new GoogleAuthProvider();
@@ -40,28 +24,39 @@ export const LoginWithGoogle = () => {
         await signInWithGoogle(googleProvider);
     }
 
-    if (state === 1) {
+    // const handleUserLoggedIn = (user: any) => {
+    //     history.push('/register')
+    // }
+
+    // const handleUserNotRegistered = (user: any) => {
+    //     history.push('/')
+    // }
+
+    // const handleUsernotLoggedIn = () => {
+    //     setCurrentState(4);
+    // }
+
+    if (state === 4) {
         return (
             <IonContent>
-                <p>Cargando...</p>
+                <IonButton expand="block" onClick={handleOnClic}>iniciar con Google</IonButton>
             </IonContent>
         );
-    } if (state === 2) {
+    }if(state === 5){
         return (
             <IonContent>
-                <p>Ok</p>
-            </IonContent>
-        );
-    } if (state === 3) {
-        return (
-            <IonContent>
-                <p>Estas autenticado pero no registrado</p>
+                <IonButton expand="block" onClick={handleOnClic}>iniciar con Google</IonButton>
             </IonContent>
         );
     } else {
         return (
             <IonContent>
-                <IonButton expand="block" onClick={handleOnClic}>iniciar con Google</IonButton>
+                {/* <AuthProvider
+                    onUserLoggedIn={handleUserLoggedIn}
+                    onUsernotLoggedIn={handleUsernotLoggedIn}
+                    onUserNotRegistered={handleUserNotRegistered}
+                >
+                </AuthProvider> */}
             </IonContent>
         );
     }

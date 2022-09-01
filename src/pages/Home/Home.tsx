@@ -1,14 +1,18 @@
-import { IonContent } from '@ionic/react';
-import { ListOfCategories } from '../../components/ListOfCategories';
+import { IonContent, IonPage } from '@ionic/react';
+import { ListOfCategories } from '../../components/ListOfCategories/ListOfCategories';
 import { ListOfPhotoCards } from '../../components/ListOfPhotoCards';
+import { NavBar } from '../../components/NavBar';
 
 
 export const Home = () => {
     return (
-        <IonContent>
-            <ListOfCategories />
-            <ListOfPhotoCards />
-        </IonContent>
+        <IonPage>
+            <IonContent>
+                <ListOfCategories />
+                {/* <ListOfPhotoCards /> */}
+                {/* <NavBar /> */}
+            </IonContent>
+        </IonPage>
     );
 };
 

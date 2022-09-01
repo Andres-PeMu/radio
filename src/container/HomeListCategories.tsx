@@ -1,6 +1,6 @@
 import { IonContent } from '@ionic/react'
 import { PhotoCard } from "../components/PhotoCard";
-import { ListOfCategories } from '../components/ListOfCategories';
+import { ListOfCategories } from '../components/ListOfCategories/ListOfCategories';
 import { photos } from "../api/categories";
 import { Logo } from '../components/Logo/Logo';
 

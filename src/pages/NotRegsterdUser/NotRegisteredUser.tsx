@@ -19,7 +19,7 @@ export const NotRegisteredUser = () => {
                                 </IonContent>
                             )
                         }
-                    }
+                    }   
                 </Consumer>
             </IonContent>
         </IonPage>
