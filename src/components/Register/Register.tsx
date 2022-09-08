@@ -1,9 +1,9 @@
 import { IonContent, IonButton, IonInput, IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
-import { Link } from 'react-router-dom';
 import { AuthProvider } from "../../services/AuthProvider/AuthProvider";
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
 import { existsUsername, updateUser } from "../../FireBase/Firebase";
+import { Consumer } from "../../hook/useContext";
 
 export const Register = () => {
 
@@ -24,18 +24,19 @@ export const Register = () => {
         date: '',
     })
 
-    // const handleUserLoggedIn = (user: any) => {
-    //     history.push('/register')
-    // }
+    const handleUserLoggedIn = (user: any) => {
+        history.push('/')
+    }
 
-    // const handleUserNotRegistered = (user: any) => {
-    //     setCurrentUser(user);
-    //     setState(3);
-    // }
+    const handleUserNotRegistered = (user: any) => {
+        setCurrentUser(user);
+        setState(3);
+        console.log('estoy entrando a handleUserNotRegistered register', currentUser, state)
+    }
 
-    // const handleUsernotLoggedIn = () => {
-    //     history.push('/user')
-    // }
+    const handleUsernotLoggedIn = () => {
+        history.push('/user')
+    }
 
     const handleUserName = (event: any) => {
         setFormulari({
@@ -93,6 +94,7 @@ export const Register = () => {
                 console.log(currentUser)
                 console.log(tmp)
                 await updateUser(tmp)
+                history.push('/')
             }
         }
     }
@@ -125,9 +127,7 @@ export const Register = () => {
                     <IonItem className='from_item'>
                         <IonInput className='from_input' type="date" required onIonChange={e => handleDate(e)}></IonInput>
                     </IonItem>
-                    {/* <Link to={'/'}> */}
-                        <IonButton expand="block" class='ion-margin-top' onClick={() => handleRegister()}>Siguiente</IonButton>
-                    {/* </Link> */}
+                    <IonButton expand="block" class='ion-margin-top' onClick={() => { handleRegister() }}>Siguiente</IonButton>
                 </form>
             </IonContent>
         )
@@ -135,12 +135,22 @@ export const Register = () => {
 
     return (
         <IonContent>
-            {/* <AuthProvider
-                onUserLoggedIn={handleUserLoggedIn}
-                onUsernotLoggedIn={handleUsernotLoggedIn}
-                onUserNotRegistered={handleUserNotRegistered}
-            >
-            </AuthProvider> */}
+            <Consumer>
+                {
+                    ({ activateAuth }) => {
+                        return (
+                            <AuthProvider
+                                onUserLoggedIn={handleUserLoggedIn}
+                                onUsernotLoggedIn={handleUsernotLoggedIn}
+                                onUserNotRegistered={handleUserNotRegistered}
+                                onActivateAuth={activateAuth}
+                            >
+                            </AuthProvider>
+                        )
+                    }
+                }
+            </Consumer>
         </IonContent>
     );
 };
+

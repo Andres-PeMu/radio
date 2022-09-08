@@ -9,8 +9,8 @@ export const Home = () => {
         <IonPage>
             <IonContent>
                 <ListOfCategories />
-                {/* <ListOfPhotoCards /> */}
-                {/* <NavBar /> */}
+                <ListOfPhotoCards />
+                <NavBar />
             </IonContent>
         </IonPage>
     );

@@ -24,17 +24,17 @@ export const LoginWithGoogle = () => {
         await signInWithGoogle(googleProvider);
     }
 
-    // const handleUserLoggedIn = (user: any) => {
-    //     history.push('/register')
-    // }
+    const handleUserLoggedIn = (user: any) => {
+        history.push('/register')
+    }
 
-    // const handleUserNotRegistered = (user: any) => {
-    //     history.push('/')
-    // }
+    const handleUserNotRegistered = (user: any) => {
+        history.push('/register')
+    }
 
-    // const handleUsernotLoggedIn = () => {
-    //     setCurrentState(4);
-    // }
+    const handleUsernotLoggedIn = () => {
+        setCurrentState(4);
+    }
 
     if (state === 4) {
         return (
@@ -45,18 +45,19 @@ export const LoginWithGoogle = () => {
     }if(state === 5){
         return (
             <IonContent>
-                <IonButton expand="block" onClick={handleOnClic}>iniciar con Google</IonButton>
+                {/* <IonButton expand="block" onClick={handleOnClic}>iniciar con Google</IonButton> */}
             </IonContent>
         );
     } else {
         return (
             <IonContent>
-                {/* <AuthProvider
+                <AuthProvider
                     onUserLoggedIn={handleUserLoggedIn}
                     onUsernotLoggedIn={handleUsernotLoggedIn}
                     onUserNotRegistered={handleUserNotRegistered}
+                    onActivateAuth={handleUserLoggedIn}
                 >
-                </AuthProvider> */}
+                </AuthProvider>
             </IonContent>
         );
     }
