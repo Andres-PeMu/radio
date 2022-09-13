@@ -2,7 +2,7 @@ import { IonContent, IonButton, IonInput, IonItem, IonLabel, IonSelect, IonSelec
 import { AuthProvider } from "../../services/AuthProvider/AuthProvider";
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
-import { existsUsername, updateUser } from "../../FireBase/Firebase";
+import { existsUsername, updateUser, userExists } from "../../FireBase/Firebase";
 import { Consumer } from "../../hook/useContext";
 
 export const Register = () => {
@@ -10,11 +10,24 @@ export const Register = () => {
 
     let history = useHistory();
     const [state, setState] = useState(0)
+    const [userPassword, setUserPassword] = useState({
+        displayName: '',
+        username: '',
+        processCompleted: false,
+        uid: '',
+        name: '',
+        lastName: '',
+        gener: '',
+        date: '',
+        password: '',
+        email: ''
+    })
     const [currentUser, setCurrentUser] = useState({
         displayName: '',
         username: '',
         processCompleted: false,
         uid: '',
+        email: '',
     })
     const [formulari, setFormulari] = useState({
         username: '',
@@ -22,6 +35,10 @@ export const Register = () => {
         lastName: '',
         gener: '',
         date: '',
+        password: '',
+    })
+    const [password, setPassword] = useState({
+        password: '',
     })
 
     const handleUserLoggedIn = (user: any) => {
@@ -35,7 +52,8 @@ export const Register = () => {
     }
 
     const handleUsernotLoggedIn = () => {
-        history.push('/user')
+        // history.push('/user')
+        console.log('contraseña')
     }
 
     const handleUserName = (event: any) => {
@@ -73,6 +91,13 @@ export const Register = () => {
         })
     }
 
+    const handlePassWord = (event: any) => {
+        setFormulari({
+            ...formulari,
+            password: event.target.value
+        })
+    }
+
     const handleRegister = async () => {
         console.log(formulari)
         if (formulari.username !== '' && formulari.name !== '' && formulari.lastName !== '' && formulari.gener !== '' && formulari.date !== '') {
@@ -86,15 +111,27 @@ export const Register = () => {
                     username: '',
                     processCompleted: false,
                     uid: '',
+                    name: '',
+                    lastName: '',
+                    gener: '',
+                    date: '',
+                    password: '',
+                    email: '',
+                    activate: false,
                 };
                 tmp.username = formulari.username;
                 tmp.processCompleted = true;
                 tmp.displayName = currentUser.displayName;
+                tmp.email = currentUser.email;
                 tmp.uid = currentUser.uid;
-                console.log(currentUser)
-                console.log(tmp)
+                tmp.name = formulari.name;
+                tmp.lastName = formulari.lastName;
+                tmp.gener = formulari.gener;
+                tmp.date = formulari.date;
+                tmp.password = formulari.password;
+                tmp.activate = true;
                 await updateUser(tmp)
-                history.push('/')
+                // history.push('/');
             }
         }
     }
@@ -127,7 +164,73 @@ export const Register = () => {
                     <IonItem className='from_item'>
                         <IonInput className='from_input' type="date" required onIonChange={e => handleDate(e)}></IonInput>
                     </IonItem>
+                    <IonItem className='from_item'>
+                        <IonLabel position="floating">Contraseña</IonLabel>
+                        <IonInput className='from_input' type="password" required onIonChange={e => handlePassWord(e)}></IonInput>
+                    </IonItem>
                     <IonButton expand="block" class='ion-margin-top' onClick={() => { handleRegister() }}>Siguiente</IonButton>
+                </form>
+            </IonContent>
+        )
+    }
+
+    const handleUserPassword = async (user: any) => {
+        console.log('este es el user: ', user);
+        setUserPassword(user)
+        setState(6);
+    }
+
+    const handlePasswordSubmit = async () => {
+        console.log(userPassword.password);
+        console.log(password.password);
+        if (userPassword.password === password.password) {
+            const tmp = {
+                displayName: '',
+                username: '',
+                processCompleted: false,
+                uid: '',
+                name: '',
+                lastName: '',
+                gener: '',
+                date: '',
+                password: '',
+                email: '',
+                activate: false,
+            };
+            tmp.username = userPassword.username;
+            tmp.processCompleted = true;
+            tmp.displayName = userPassword.displayName;
+            tmp.email = userPassword.email;
+            tmp.uid = userPassword.uid;
+            tmp.name = userPassword.name;
+            tmp.lastName = userPassword.lastName;
+            tmp.gener = userPassword.gener;
+            tmp.date = userPassword.date;
+            tmp.password = userPassword.password;
+            tmp.activate = true;
+            console.log('tmp', tmp)
+            await updateUser(tmp)
+            history.push('/');
+        }
+    }
+
+    const handlePasswordInput = (e: any) => {
+        setPassword({
+           password: e.target.value,
+        })
+        console.log('value ',e.target.value)
+        console.log(password.password)
+    }
+
+    if (state === 6) {
+        return (
+            <IonContent>
+                <form>
+                    <IonItem className='from_item'>
+                        <IonLabel position="floating">Contraseña</IonLabel>
+                        <IonInput className='from_input' type="password" required onIonChange={e => handlePasswordInput(e)}></IonInput>
+                    </IonItem>
+                    <IonButton expand="block" class='ion-margin-top' onClick={() => { handlePasswordSubmit() }}>Siguiente</IonButton>
                 </form>
             </IonContent>
         )
@@ -144,6 +247,7 @@ export const Register = () => {
                                 onUsernotLoggedIn={handleUsernotLoggedIn}
                                 onUserNotRegistered={handleUserNotRegistered}
                                 onActivateAuth={activateAuth}
+                                onUserPassword={handleUserPassword}
                             >
                             </AuthProvider>
                         )

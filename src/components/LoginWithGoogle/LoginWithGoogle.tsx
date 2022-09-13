@@ -26,6 +26,7 @@ export const LoginWithGoogle = () => {
 
     const handleUserLoggedIn = (user: any) => {
         history.push('/register')
+        // setCurrentState(4);
     }
 
     const handleUserNotRegistered = (user: any) => {
@@ -34,6 +35,10 @@ export const LoginWithGoogle = () => {
 
     const handleUsernotLoggedIn = () => {
         setCurrentState(4);
+    }
+
+    const handleUserPassword = () => {
+        history.push('/register')
     }
 
     if (state === 4) {
@@ -56,6 +61,7 @@ export const LoginWithGoogle = () => {
                     onUsernotLoggedIn={handleUsernotLoggedIn}
                     onUserNotRegistered={handleUserNotRegistered}
                     onActivateAuth={handleUserLoggedIn}
+                    onUserPassword={handleUserPassword}
                 >
                 </AuthProvider>
             </IonContent>

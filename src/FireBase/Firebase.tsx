@@ -84,5 +84,6 @@ export const getUserInfo = async (uid:any):Promise<userInfoRegister | undefined>
     const document = await getDoc(docRef)
     return document.data();
   } catch (error) {
+    console.log(error);
   }
 }

@@ -34,7 +34,6 @@ const IsAuthContext = () => {
               <Route exact path="/user" component={NotRegisteredUser} />
               <Route exact path="/login" component={NotRegisteredUser} />
               <Route exact path="/" component={NotRegisteredUser} />
-              <Route exact path="*" component={NotRegisteredUser} />
               <Route exact path="/register" component={Register} />
             </IonContent>
       }
