@@ -1,7 +1,7 @@
 import { useEffect, } from 'react';
 
 import { onAuthStateChanged } from 'firebase/auth';
-import { Auth, getUserInfo, registerNewUser, userExists } from '../../FireBase/Firebase';
+import { Auth, getUserInfo, registerNewUser, userExists } from '../../services/FireBase/Firebase';
 import { userInfoRegister } from '../../interface/userInfo.model';
 
 export const AuthProvider = ({ children, onUserPassword, onUserLoggedIn, onUsernotLoggedIn, onUserNotRegistered, onActivateAuth }
@@ -16,7 +16,7 @@ export const AuthProvider = ({ children, onUserPassword, onUserLoggedIn, onUsern
                     console.log('este es user info', userInfo)
                     if (userInfo?.processCompleted) {
                         if (userInfo?.activate) {
-                            onActivateAuth();
+                            onActivateAuth();    
                             onUserLoggedIn(userInfo);
                             console.log('directo al home')
                         } else {

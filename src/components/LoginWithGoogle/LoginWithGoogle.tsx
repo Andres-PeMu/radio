@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { Auth } from '../../FireBase/Firebase'
+import { Auth } from '../../services/FireBase/Firebase'
 import { IonButton, IonContent } from '@ionic/react';
 import { AuthProvider } from '../../services/AuthProvider/AuthProvider';
-// import { Consumer } from '../../hook/useContext';
 
 
 export const LoginWithGoogle = () => {
@@ -26,7 +25,6 @@ export const LoginWithGoogle = () => {
 
     const handleUserLoggedIn = (user: any) => {
         history.push('/register')
-        // setCurrentState(4);
     }
 
     const handleUserNotRegistered = (user: any) => {

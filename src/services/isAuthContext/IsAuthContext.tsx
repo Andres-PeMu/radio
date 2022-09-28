@@ -13,6 +13,8 @@ import { Register } from '../../components/Register/Register';
 import { Home } from '../../pages/Home/Home';
 import { PhotocarProps } from '../../container/PhotocarProps';
 import { HomeListCategories } from '../../container/HomeListCategories';
+import { LoginSignup } from '../../components/LoginSigup/LoginSignup';
+import ForgotPassword from '../../components/forgotPassword/ForgotPassword';
 
 const IsAuthContext = () => {
   return (
@@ -35,6 +37,8 @@ const IsAuthContext = () => {
               <Route exact path="/login" component={NotRegisteredUser} />
               <Route exact path="/" component={NotRegisteredUser} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/userRegister" component={LoginSignup} />
+              <Route exact path="/recuperarContraseña" component={ForgotPassword} />
             </IonContent>
       }
     </Consumer>

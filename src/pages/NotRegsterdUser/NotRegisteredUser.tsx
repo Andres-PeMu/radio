@@ -1,5 +1,5 @@
-import { Consumer } from '../../hook/useContext'
-import { UserFrom } from '../../components/UserForm';
+// import { Consumer } from '../../hook/useContext'
+import { UserFrom } from '../../components/UserForm/UserFrom';
 import { IonContent, IonPage } from '@ionic/react';
 import { Logo } from '../../components/Logo/Logo';
 import { LoginWithGoogle } from '../../components/LoginWithGoogle/LoginWithGoogle';
@@ -9,18 +9,8 @@ export const NotRegisteredUser = () => {
         <IonPage>
             <Logo />
             <IonContent>
-                <Consumer>
-                    {
-                        ({ activateAuth }) => {
-                            return (
-                                <IonContent>
-                                    <UserFrom onSubmit={activateAuth} />
-                                    <LoginWithGoogle />
-                                </IonContent>
-                            )
-                        }
-                    }   
-                </Consumer>
+                <UserFrom />
+                <LoginWithGoogle />
             </IonContent>
         </IonPage>
     );

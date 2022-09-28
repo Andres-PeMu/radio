@@ -2,7 +2,7 @@ import { IonContent, IonButton, IonInput, IonItem, IonLabel, IonSelect, IonSelec
 import { AuthProvider } from "../../services/AuthProvider/AuthProvider";
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
-import { existsUsername, updateUser, userExists } from "../../FireBase/Firebase";
+import { existsUsername, updateUser } from "../../services/FireBase/Firebase";
 import { Consumer } from "../../hook/useContext";
 
 export const Register = () => {
@@ -216,9 +216,9 @@ export const Register = () => {
 
     const handlePasswordInput = (e: any) => {
         setPassword({
-           password: e.target.value,
+            password: e.target.value,
         })
-        console.log('value ',e.target.value)
+        console.log('value ', e.target.value)
         console.log(password.password)
     }
 

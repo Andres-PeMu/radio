@@ -1,7 +1,7 @@
 import { IonContent, IonButton, IonInput, IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-import { existsUsername, updateUser } from "../../FireBase/Firebase";
+import { existsUsername, updateUser } from "../../services/FireBase/Firebase";
 
 
 const RegisterFrom = () => {

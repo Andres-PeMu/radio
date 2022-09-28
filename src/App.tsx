@@ -1,4 +1,3 @@
-// import { Route } from 'react-router-dom';
 import {
   IonApp,
   IonRouterOutlet,
@@ -26,20 +25,10 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-// components
-// import { Home } from './pages/Home/Home'
-// import { NavBar } from './components/NavBar';
-// import { Logo } from './components/Logo/Logo';
-
-// import { PhotocarProps } from './container/PhotocarProps'
-// import { HomeListCategories } from './container/HomeListCategories';
-
 /* Theme variables */
 import './theme/variables.css';
-// 
-// import { NotRegisteredUser } from './pages/NotRegsterdUser/NotRegisteredUser';
-import IsAuthContext from './services/isAuthContext/IsAuthContext';
 
+import IsAuthContext from './services/isAuthContext/IsAuthContext';
 
 setupIonicReact();
 
